@@ -31,7 +31,10 @@ export default function Programmers() {
   // The programmers list on the one hand, and the id of the featured programmer on the other.
 
   const getNameOfFeatured = () => {
-    setFeaturedProgrammer(programmers[id].name)
+    const programmer = featuredProgrammer - 1
+    
+    const name = programmers[programmer].name
+    return name
     // Leave this for last!
     // This is NOT an event handler but a helper function. See its usage inside the JSX.
     // It's going to utilize both slices of state to return the _name_ of the featured dev.
@@ -55,7 +58,7 @@ export default function Programmers() {
           we could never add or edit programmers in the future. The list would be a static thing." */
           programmers.map(dev =>
             <div className='programmer' key={dev.id}>
-              {dev.name} <button onClick={() => { featuredProgrammer = dev.id }}>Feature</button>
+              {dev.name} <button onClick={() => { setFeaturedProgrammer(dev.id)}}>Feature</button>
             </div>
           )
         }
